@@ -1,3 +1,6 @@
+import os
+
+
 class Journal:
     def __init__(self) -> None:
         self.entries = []
@@ -39,5 +42,13 @@ class PersistenceManager:
 j = Journal()
 j.add_entry('I cried today.')
 j.add_entry('I ate a bug.')
+
+file = os.path.curdir + '/journal.txt'
+
+PersistenceManager.save_to_file(j, file)
+
+with open(file) as f:
+    print(f.read())
+
 # j.load("sample.txt")
-print(f'Journal Entries:\n{j}')
+#print(f'Journal Entries:\n{j}')
